@@ -5,34 +5,143 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pesquisa de Liderança - ADSA Chácara Florida</title>
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; padding: 20px; color: #333; }
-    .container { max-width: 600px; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: auto; }
-    h2 { color: #1a237e; border-bottom: 2px solid #1a237e; padding-bottom: 10px; }
-    label { font-weight: bold; display: block; margin-top: 20px; }
-    input[type="text"], select, textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-    
-    .btn-principal { background-color: #1a237e; color: white; padding: 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%; margin-top: 30px; font-size: 16px; font-weight: bold;}
+    :root {
+      --primary: #1a237e;
+      --accent: #c5a059;
+      --bg: #f0f2f5;
+      --card: #ffffff;
+      --text: #333333;
+    }
+
+    body { 
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      background-color: var(--bg); 
+      padding: 15px; 
+      color: var(--text);
+      margin: 0;
+    }
+
+    .container { 
+      max-width: 650px; 
+      background: var(--card); 
+      padding: 40px 30px; 
+      border-radius: 16px; 
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+      margin: 20px auto; 
+      border-top: 10px solid var(--primary);
+    }
+
+    .header-logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header-logo img {
+      max-width: 130px;
+      height: auto;
+    }
+
+    h2 { 
+      color: var(--primary); 
+      text-align: center; 
+      font-size: 22px;
+      margin-top: 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-top: 35px;
+      margin-bottom: 10px;
+      display: block;
+      border-left: 5px solid var(--accent);
+      padding-left: 12px;
+    }
+
+    label { 
+      font-weight: 600; 
+      display: block; 
+      margin-top: 15px; 
+      color: #555;
+      line-height: 1.4;
+    }
+
+    input[type="text"], select, textarea { 
+      width: 100%; 
+      padding: 12px; 
+      margin-top: 8px; 
+      border: 1.5px solid #ddd; 
+      border-radius: 8px; 
+      box-sizing: border-box; 
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+    }
+
+    .btn-principal { 
+      background-color: var(--primary); 
+      color: white; 
+      padding: 18px; 
+      border: none; 
+      border-radius: 8px; 
+      cursor: pointer; 
+      width: 100%; 
+      margin-top: 40px; 
+      font-size: 18px; 
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
     .btn-principal:hover { background-color: #0d47a1; }
     .btn-principal:disabled { background-color: #9e9e9e; cursor: not-allowed; }
     
-    .footer { text-align: center; font-size: 12px; margin-top: 20px; color: #777; }
+    .footer { 
+      text-align: center; 
+      font-size: 13px; 
+      margin-top: 30px; 
+      color: #777; 
+      font-style: italic;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
 
     /* MODAL */
-    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); }
-    .modal-content { background-color: #fff; margin: 20% auto; padding: 30px; border-radius: 8px; width: 80%; max-width: 400px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.2); border-top: 6px solid #1a237e; animation: fadeIn 0.4s; }
-    .modal-content h3 { color: #1a237e; margin-top: 0; }
-    .btn-modal { background-color: #1a237e; color: white; padding: 10px 25px; margin-top: 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); backdrop-filter: blur(3px); }
+    .modal-content { background-color: #fff; margin: 15% auto; padding: 40px; border-radius: 15px; width: 85%; max-width: 400px; text-align: center; border-top: 8px solid var(--accent); animation: fadeIn 0.4s; }
+    .modal-content h3 { color: var(--primary); margin-top: 0; font-size: 24px; }
+    .btn-modal { background-color: var(--primary); color: white; padding: 12px 30px; margin-top: 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; }
 
     @keyframes fadeIn { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
+
+    @media (max-width: 480px) {
+      .container { padding: 25px 20px; }
+      h2 { font-size: 18px; }
+      .section-title { font-size: 18px; }
+    }
   </style>
 </head>
 <body>
+
   <div class="container">
-    <h2>ADSA Chácara Florida - Liderança</h2>
+    <div class="header-logo">
+      <img src="https://yt3.googleusercontent.com/ytc/AIdro_m7gxMV-mFgOE4WvRg46xM7_JkT_F0DLl2D9iZy9q40Bd4=s900-c-k-c0x00ffffff-no-rj" alt="Logo ADSA">
+    </div>
+    <h2>Pesquisa de Liderança</h2>
+    
     <form id="enqueteForm">
+      <span class="section-title">1. Identificação</span>
       <label>Nome (Opcional)</label>
       <input type="text" name="nome" placeholder="Seu nome ou deixe em branco">
 
+      <span class="section-title">2. Sobre a Reunião</span>
       <label>Qual foi a utilidade da reunião para você/departamento?</label>
       <select name="utilidade_nota" required>
         <option value="">Selecione uma nota (1 a 5)</option>
@@ -44,17 +153,21 @@
       </select>
       <input type="text" name="utilidade_comentario" placeholder="Por que deu essa nota?" required>
 
+      <span class="section-title">3. Sobre a EBD</span>
       <label>Sendo a EBD a base do seu preparo bíblico, qual barreira hoje é mais forte do que o seu compromisso de estar presente no domingo de manhã? Ou o que falta no ensino para que ele se torne sua prioridade inegociável?</label>
       <textarea name="ebd_motivo" rows="3" required></textarea>
 
-      <label>Sobre o Culto de Ensino (Segundas-feiras): Se a saúde espiritual do departamento que hoje você lidera dependesse apenas do que você aprende na segunda-feira, seu grupo estaria nutrido ou faminto? O que impede você de se alimentar da Palavra conosco ou o que facilitaria sua presença?</label>
+      <span class="section-title">4. Sobre o Culto de Ensino Segundas-feiras: </span>
+      <label>Se a saúde espiritual do departamento que hoje você lidera,e/ou do Cargo que ocupa dependesse apenas do que você aprende na segunda-feira, seu grupo estaria nutrido ou faminto? O que impede você de se alimentar da Palavra conosco ou o que facilitaria sua presença?</label>
       <textarea name="ensino_motivo" rows="3" required></textarea>
 
-      <label>A oração é o motor da igreja. Honestamente: você acredita que o departamento que hoje você lidera pode florescer sem a sua participação na oração coletiva, ou existe algo no horário/formato que realmente impede sua escala de prioridades?</label>
+      <span class="section-title">5. Sobre o Culto com Circulo de Oração</span>
+      <label>A oração é o motor da igreja. Honestamente: você acredita que o departamento que hoje você lidera e/ou do Cargo que ocupa pode florescer sem a sua participação na oração coletiva, ou existe algo no horário/formato que realmente impede sua escala de prioridades?</label>
       <textarea name="oracao_motivo" rows="3" required></textarea>
 
-      <label>Use este campo para sua sugestão, opinião ou crítica construtiva. O que você faria se estivesse no lugar do Pastor?</label>
-      <textarea name="sugestoes" rows="4"></textarea>
+      <span class="section-title">6. Use este campo para sua sugestão, opinião ou crítica construtiva.</span>
+      <label>O que você faria se estivesse no lugar do Pastor?</label>
+      <textarea name="sugestoes" rows="4" placeholder="Sua opinião ou crítica construtiva..."></textarea>
 
       <button type="submit" id="btnSubmit" class="btn-principal">Enviar Resposta para os Pastores</button>
     </form>
@@ -65,7 +178,7 @@
   <div id="modalConfirmacao" class="modal">
     <div class="modal-content">
       <h3>Glória a Deus!</h3>
-      <p>Sua resposta foi enviada com sucesso!<br><strong>Deus abençoe seu ministério.</strong></p>
+      <p>Sua resposta foi enviada com sucesso!<br><br><strong>Deus abençoe seu ministério.</strong></p>
       <button class="btn-modal" onclick="fecharModal()">Amém</button>
     </div>
   </div>
@@ -73,7 +186,7 @@
   <script>
     const form = document.getElementById('enqueteForm');
     const btn = document.getElementById('btnSubmit');
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbz19B-Lvtb4ogSt4gQ5Zb3Qp6Ibz__jgSFmOlGanFPtTYbFI6ZwbKlsYIML7SM3h9Rghg/exec'; // <--- COLOQUE AQUI SUA URL DO GOOGLE SCRIPT
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz19B-Lvtb4ogSt4gQ5Zb3Qp6Ibz__jgSFmOlGanFPtTYbFI6ZwbKlsYIML7SM3h9Rghg/exec';
 
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -82,7 +195,7 @@
 
       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => {
-          btn.innerHTML = "Enviar Resposta para os Pastores";
+          btn.innerHTML = "Enviar Resposta";
           btn.disabled = false;
           form.reset();
           document.getElementById('modalConfirmacao').style.display = "block";
